@@ -12,7 +12,6 @@
 using namespace std;
 namespace sol1810
 {
-
   class GridMaster
   {
   private:
@@ -37,7 +36,27 @@ namespace sol1810
 
   class Solution
   {
+  private:
+    unordered_map<char, tuple<int, int, char>> dirs =
+        unordered_map<char, tuple<int, int, char>>{
+            {'U', make_tuple(-1, 0, 'D')},
+            {'D', make_tuple(1, 0, 'U')},
+            {'L', make_tuple(0, -1, 'R')},
+            {'R', make_tuple(0, 1, 'L')}};
+    void buildGrid(
+        GridMaster &gm, vector<vector<int>> &grid,
+        const pair<int, int> &pos, pair<int, int> &target);
+
   public:
+    /*
+      - we shouldn't know the dimensions of
+        the hidden grid and hard code the m
+        as 100 per the constraints
+      - we add it here so it's easier to
+        debug without creating a big
+        matrix
+    */
+    int minCost(GridMaster &gm, int m);
   };
 
 }
